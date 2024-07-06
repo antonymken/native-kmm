@@ -1,0 +1,12 @@
+
+package = com.muiltplatform.project
+
+# Optional sections
+linkerOpts = -Lsrc/nativeMain/cpp/build/lib -lnative
+compilerOpts = -Isrc/nativeMain/cpp
+
+# No string conversion for specific functions
+noStringConversion = freeMemoryNative
+
+# staticLibraries = libnative.a
+# libraryPaths = /path/to/libs
