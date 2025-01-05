@@ -1,13 +1,11 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import co.touchlab.cklib.gradle.CompileToBitcode
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.cklib)
 }
 
 kotlin {
@@ -109,12 +107,4 @@ android {
 tasks.withType<Wrapper> {
     gradleVersion = "8.7"
     distributionType = Wrapper.DistributionType.BIN
-}
-
-cklib {
-    config.kotlinVersion = libs.versions.kotlin.get()
-    create("nativeApp") {
-        language = CompileToBitcode.Language.CPP
-        srcDirs = project.files(file("src/nativeMain/cpp/"))
-    }
 }

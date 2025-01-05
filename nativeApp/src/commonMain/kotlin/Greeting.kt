@@ -4,7 +4,7 @@ class Greeting {
     private val platform = getPlatform()
 
     fun greet(): String {
-        return greet("native yes yes yes hurrayyy")
+        return greet("$platform native yes yes yes hurrayyy")
     }
 }
 
