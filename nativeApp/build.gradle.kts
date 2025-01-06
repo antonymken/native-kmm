@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Locale
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -24,7 +25,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "nativeApp"
             isStatic = true
-            freeCompilerArgs += "-Xbinary=bundleId=com.muiltplatform.project.kmm"
+            binaryOption("bundleId", "com.muiltplatform.project.kmm")
         }
         iosTarget.compilations {
             val main by getting {
@@ -107,4 +108,19 @@ android {
 tasks.withType<Wrapper> {
     gradleVersion = "8.7"
     distributionType = Wrapper.DistributionType.BIN
+}
+
+val isMacOs = System.getProperty("os.name").lowercase(Locale.getDefault()).contains("mac")
+
+if (isMacOs) {
+    tasks.register<Exec>("buildNativeLib") {
+        commandLine("sh", "-c", "cd src/nativeMain/cpp && ./build_nativeApp.sh")
+    }
+
+    tasks["cinteropNativeAppIosX64"].dependsOn("buildNativeLib")
+    tasks["cinteropNativeAppIosArm64"].dependsOn("buildNativeLib")
+    tasks["cinteropNativeAppIosSimulatorArm64"].dependsOn("buildNativeLib")
+    tasks["compileKotlinIosArm64"].dependsOn("buildNativeLib")
+    tasks["compileKotlinIosSimulatorArm64"].dependsOn("buildNativeLib")
+    tasks["compileKotlinIosX64"].dependsOn("buildNativeLib")
 }

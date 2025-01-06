@@ -25,6 +25,12 @@ project(nativeApp VERSION 1.0.0)
 # System.loadLibrary() and pass the name of the library defined here;
 # for GameActivity/NativeActivity derived applications, the same library name must be
 # used in the AndroidManifest.xml file.
+
+# Set C++ standard to C++11
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 if(ANDROID)
     set(SOURCES
             main_jni.cpp
@@ -38,19 +44,11 @@ endif()
 
 # Add the library
 add_library(nativeApp SHARED ${SOURCES})
-# add_library(nativeApp SHARED
-    # List C/C++ source files with relative paths to this CMakeLists.txt.
-# main.cpp)
+
 target_sources(nativeApp PRIVATE
         ${SOURCES}
         main.hpp
 )
 
-# Include directories
-target_include_directories(nativeApp PRIVATE ${CMAKE_SOURCE_DIR}/include)
-
 # Set the target properties
 set_target_properties(nativeApp PROPERTIES LINKER_LANGUAGE CXX)
-
-# Add this line to include the standard C++ library path
-include_directories(${CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES})

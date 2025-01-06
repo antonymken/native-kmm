@@ -10,19 +10,19 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		494C326A2C3405D80044F2D9 /* nativeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494C32692C3405D80044F2D9 /* nativeApp.framework */; };
-		494C326B2C3405D80044F2D9 /* nativeApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 494C32692C3405D80044F2D9 /* nativeApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		49FE367A2D2B65D200835A5D /* nativeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FE36792D2B65D200835A5D /* nativeApp.framework */; };
+		49FE367B2D2B65D200835A5D /* nativeApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49FE36792D2B65D200835A5D /* nativeApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		494C32652C3405960044F2D9 /* Embed Frameworks */ = {
+		49A9FB802D2A934400E7EA5E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				494C326B2C3405D80044F2D9 /* nativeApp.framework in Embed Frameworks */,
+				49FE367B2D2B65D200835A5D /* nativeApp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,7 +33,7 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
-		494C32692C3405D80044F2D9 /* nativeApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nativeApp.framework; path = ../nativeApp/build/bin/iosX64/debugFramework/nativeApp.framework; sourceTree = "<group>"; };
+		49FE36792D2B65D200835A5D /* nativeApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nativeApp.framework; path = "../nativeApp/build/fat-framework/debug/nativeApp.framework"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* nativeAppIos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nativeAppIos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				494C326A2C3405D80044F2D9 /* nativeApp.framework in Frameworks */,
+				49FE367A2D2B65D200835A5D /* nativeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 		42799AB246E5F90AF97AA0EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				494C32692C3405D80044F2D9 /* nativeApp.framework */,
+				49FE36792D2B65D200835A5D /* nativeApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,7 +117,7 @@
 				7555FF77242A565900829871 /* Sources */,
 				B92378962B6B1156000C7307 /* Frameworks */,
 				7555FF79242A565900829871 /* Resources */,
-				494C32652C3405960044F2D9 /* Embed Frameworks */,
+				49A9FB802D2A934400E7EA5E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,7 +343,9 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)\n$(SRCROOT)/../nativeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../nativeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../nativeApp/build/fat-framework/$(CONFIGURATION)/nativeApp.framework",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
@@ -371,7 +373,9 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)\n$(SRCROOT)/../nativeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../nativeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../nativeApp/build/fat-framework/$(CONFIGURATION)/nativeApp.framework",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.3;

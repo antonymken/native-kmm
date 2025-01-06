@@ -1,3 +1,4 @@
+#ifndef __ANDROID__ //not android
 #include "main.hpp"
 #include <string>
 
@@ -19,3 +20,4 @@ void freeMemoryNative(const char* ptr) {
 #ifdef __cplusplus
 }
 #endif
+#endif //__ANDROID__
