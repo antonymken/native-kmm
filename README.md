@@ -12,3 +12,16 @@ This is a Kotlin Multiplatform project targeting Android, iOS.
 
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+**Building project**
+
+before opening project in XCode first build the project on android studio (you might need to run `chmod +x ./build_nativeApp.sh`) to give the script execute privileges
+
+**framework not found in Xcode**
+
+under add framework, remove nativeApp.framework (if exists)
+click on + button and select add other ... in dropdown
+select add files ...
+select folder nativeApp / build /fat-framework /debug /nativeApp.framework
+
+try run the app on xcode
